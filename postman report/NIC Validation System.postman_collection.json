@@ -1,0 +1,258 @@
+{
+  "info": {
+    "_postman_id": "b51afa3f-97cb-4809-98de-96ce073f3570",
+    "name": "NIC Validation System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43794574"
+  },
+  "item": [
+    {
+      "name": "auth-service",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"username\": \"Vidul\",\r\n\"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/login",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"kamal\",\r\n  \"email\": \"kamal@example.com\",\r\n  \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/register",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create OTP",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"vidul@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/create-otp",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "create-otp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"vidul@gmail.com\",\r\n    \"OTP\": \"123456\",\r\n    \"password\":\"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/update-password",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "update-password"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "nic-service",
+      "item": [
+        {
+          "name": "summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ2aWR1bEBnbWFpbC5jb20iLCJpYXQiOjE3NzMzMDg3OTYsImV4cCI6MTc3MzM5NTE5Nn0.wwKUX6xCuR0BN281_F0ZHxlA2ELVBMOD6-rT-MgC7YM",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}/nic/summary",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "nic",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "upload",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "type": "file",
+                  "uuid": "09095ed5-a9d6-463c-a96a-2c197e19b6fb",
+                  "src": "/C:/Users/LENOVO/Downloads/test_nics_dataset.csv"
+                },
+                {
+                  "key": "files",
+                  "type": "file",
+                  "uuid": "18724b4f-eb36-421f-8f1e-6ca8198000bf",
+                  "src": "/C:/Users/LENOVO/Downloads/Untitled spreadsheet - Sheet1.csv"
+                },
+                {
+                  "key": "files",
+                  "type": "file",
+                  "uuid": "5a2634c7-b270-4811-89a7-b2352eaa0f2f",
+                  "src": "/C:/Users/LENOVO/Downloads/test data set.csv"
+                },
+                {
+                  "key": "files",
+                  "type": "file",
+                  "uuid": "bde9f4c9-a4fc-44c1-9354-180db53afba2",
+                  "src": "/C:/Users/LENOVO/Downloads/annual-enterprise-survey-2024-financial-year-provisional.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}/nic/upload",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "nic",
+                "upload"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "report-service",
+      "item": [
+        {
+          "name": "report PDF",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n      \"reportType\": \"NIC report\",\r\n      \"format\": \"PDF\",\r\n      \"fromDate\": \"2026-03-01\",\r\n      \"toDate\": \"2026-03-09\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/report/report",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "report",
+                "report"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "report excel",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"reportType\": \"NIC report\",\r\n  \"format\": \"EXCEL\",\r\n  \"fromDate\": \"2026-03-01\",\r\n  \"toDate\": \"2026-03-12\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/report/report",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "report",
+                "report"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
